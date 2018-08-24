@@ -1,4 +1,7 @@
 #!/bin/bash
+# This code formats all files in class activity folders, usually names '01-Activities'
+# readme files are renamed for specificity
+# Activites get zipped and renamed for specificity
 
 for f in `ls -d */`
 do
@@ -6,18 +9,15 @@ do
         dirname=${PWD##*/} 
         if [ -e 'README.md' ]
         then
-                mv README.md $dirname'-README.md'
-                # echo $dirname'-README.md'       
+                mv README.md $dirname'-README.md'    
         fi
         if [ -e 'Unsolved' ]
         then
                 zip -r $dirname'-Unsolved' 'Unsolved'
-                # echo $dirname'-Unsolved'
         fi
         if [ -e 'Solved' ]
         then
                 zip -r $dirname'-Solved' 'Solved'
-                # echo $dirname'-Solved'
         fi
         if ([ ! -e 'Solved' ] && [ ! -e 'Unsolved' ] && [ ! -e 'README.md' ])
         then
